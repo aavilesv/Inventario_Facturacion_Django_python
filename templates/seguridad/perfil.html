@@ -1,0 +1,114 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block contenid %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+    <br>
+    <div class="col-xs-12 col-md-1"></div>
+    <div class="col-xs-12 col-md-10">
+    <div class="container-fluid">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 CLASS="text-center">PERFIL DE EMPRESA</h3>
+            </div>
+            <div class="panel-body">
+                <br>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-11  ">
+                        <div class="row">
+                            <div class="hideden-xs col-sm-3 col-md-3 col-lg-offset-2">
+                               <h2 class="animated infinite bounce" > Empresa</h2>
+                                <a href="/media/{{ user.image }}" data-lightbox="mygallery" data-title="{{ user.nombre }}">
+                                    <img  src="/media/{{ user.image }}" title="ver imagen" class="img-responsive animated infinite jello center" alt="Responsive image"></a>
+
+                            </div>
+                            <div class="col-xs-12 col-sm-9 col-md-9 col-lg-7">
+                                <div class="form-horizontal" name="frmUsuario"  action="">
+                                    <div class="form-group">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label col-md-6">Nombre de Empresa:</label>
+                                        <div class="col-md-6">
+                                            <input type="text" class="form-control " name="last_name" maxlength="20"
+                                                   id="last_name" value ='{{ user.nombre }}' disabled  style="background: white;" >
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-6">Ruc:</label>
+                                        <div class="col-md-6">
+                                            <input type="text" class="form-control " name="last_name" maxlength="20"
+                                                   id="last_name" value ='{{ user.cedula }}' disabled  style="background: white;" >
+                                        </div>
+                                    </div>
+                                      <div class="form-group">
+                                        <label class="control-label col-md-6">Dirección:</label>
+                                        <div class="col-md-6">
+                                            <input type="text" class="form-control " disabled name="" style="background: white;"  maxlength="10"
+                                                   id="" value ='{{ user.direcion }}'>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-6">Celular:</label>
+                                        <div class="col-md-6">
+                                            <input type="text" class="form-control " disabled name="email" style="background: white;"  maxlength="40"
+                                                   id="email" value ='{{ user.celular }}'>
+                                        </div>
+                                    </div>
+
+
+                                     <div class="btn btn-group col-md-offset-3 ">
+                                    <div class="col-md-2">
+
+<a class="btn btn-primary btn-sm" href="#modall" rel="action" data-toggle="modal" data-json='{"action":"edit","id":"{{ usuario.id }}"}'><i class="fa fa-edit"></i>Editar</a>
+
+                                    </div>
+
+
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div></div>
+            </div>
+
+        </div>
+    </div>
+    </div>
+
+{% endblock %}
+{% block jscript %}
+
+    <script>
+
+        {% if messages %}
+
+            {% for message in messages %}
+             swal('Info!', '{{ message }}');
+
+
+            {% endfor %}
+
+        {% endif %}
+        $('#contenedor').on('click', 'a[rel="action"]', function () {
+            var data = $(this).data('json'),
+                action = data.action,
+                id = data.id;
+
+            window.location = '{{ ruta }}?action=' + action + '&id=' + id;
+        });
+
+
+    </script>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+

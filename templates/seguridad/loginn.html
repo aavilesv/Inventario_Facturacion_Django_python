@@ -1,0 +1,162 @@
+
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <title>{{ titulo }}</title>
+     <link rel="stylesheet" href="/static/css/index.css">
+
+    <!--JQUERY-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- FRAMEWORK BOOTSTRAP para el estilo de la pagina-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+    <!-- Los iconos tipo Solid de Fontawesome-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css">
+    <script src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+
+    <!-- Nuestro css-->
+    <link rel="stylesheet" type="text/css" href="static/css/index.css" th:href="@{/css/index.css}">
+
+    <link rel="stylesheet" href="/static/css/estilos.css">
+
+
+
+    <!-- Nuestro css-->
+
+
+</head>
+<body>
+    <div class="contenedor-form">
+        <div class="toggle">
+            <span> Crear Cuenta</span>
+        </div>
+
+        <div class="formulario">
+            <h2>Iniciar Sesión</h2>
+            <form method="post" id="frm-login">
+{% csrf_token %}
+							  <div class="form-group" id="user-group">
+                        <input type="text" class="form-control" placeholder="Nombre de usuario" name="usuario"/>
+                    </div>
+							    <div class="form-group" id="contrasena-group">
+                        <input type="password" class="form-control" placeholder="Contrasena" name="password"/>
+                    </div>
+
+
+                <input type="submit" id="btnlogin" value="Iniciar Sesión">
+
+            </form>
+        </div>
+
+        <div class="formulario">
+            <h2>Crea tu Cuenta</h2>
+            <form  method="post" id="frm-loginn" action="#">
+                {% csrf_token %}
+                  <input type="text" placeholder="Nombre" required name="nombre"/>
+                  <input type="text" placeholder="Apellido" required name="apellido"/>
+                <input type="text" placeholder="Usuario" required name="usuario"/>
+
+                <input type="password" placeholder="Contraseña" required name="password"/>
+
+                <input type="email" placeholder="Correo Electronico" required name="email"/>
+
+
+
+                <input type="submit" value="Registrarse">
+            </form>
+        </div>
+        <div class="reset-password">
+            <a href="#">Olvide mi Contraseña?</a>
+        </div>
+    </div>
+
+</body>
+</html>
+
+<script src="/static/js/jquery-3.3.1.min.js"></script>
+<script src="/static/js/mainn.js"></script>
+<script>
+
+    $(function () {
+        $('#frm-login').on({
+            submit: function (e) {
+                e.preventDefault();
+                var frmData = new FormData($(this)[0]);
+                //$('#btnlogin').attr('disabled', true);
+
+                $.ajax({
+                    url: '/seguridad/login/',
+                    data: frmData,
+                    method: 'POST',
+                    dataType: 'json',
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    beforeSend: function () {
+                        $('.loading span').html('Verificando..');
+                        $('.loading i').removeClass('glyphicon glyphicon-log-in');
+                        $('.loading i').addClass('fa fa-refresh glyphicon-refresh-animate');
+                    }
+                }).done(function (data) {
+                    if (data.resp == true) {
+                        window.location = '/';
+                        return false;
+                    }
+                    alert(data.error);
+                    $('.loading span').html('Iniciar Session');
+                    $('.loading i').removeClass('fa fa-refresh glyphicon-refresh-animate');
+                    $('.loading i').addClass('glyphicon glyphicon-log-in');
+                    $('#btnlogin').attr('disabled', false);
+
+                }).fail(function () {
+                    alert('Error:Problemas de conexion con el servidor');
+                });
+            }
+        });
+         $('#frm-loginn').on({
+            submit: function (e) {
+                e.preventDefault();
+                var frmData = new FormData($(this)[0]);
+                //$('#btnlogin').attr('disabled', true);
+
+                $.ajax({
+                    url: '/seguridad/crear/',
+                    data: frmData,
+                    method: 'POST',
+                    dataType: 'json',
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    beforeSend: function () {
+                        $('.loading span').html('Verificando..');
+                        $('.loading i').removeClass('glyphicon glyphicon-log-in');
+                        $('.loading i').addClass('fa fa-refresh glyphicon-refresh-animate');
+                    }
+                }).done(function (data) {
+                    if (data.resp == true) {
+                        window.location = '/';
+                        return false;
+                    }
+                    alert(data.error);
+                    $('.loading span').html('Iniciar Session');
+                    $('.loading i').removeClass('fa fa-refresh glyphicon-refresh-animate');
+                    $('.loading i').addClass('glyphicon glyphicon-log-in');
+                    $('#btnlogin').attr('disabled', false);
+
+                }).fail(function () {
+                    alert('Error:Problemas de conexion con el servidor');
+                });
+            }
+        });
+    });
+</script>
+</body>
+</html>

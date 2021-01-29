@@ -1,0 +1,89 @@
+html, body {
+    height: 100%;
+    font-family:verdana,arial,sans-serif;
+    color:#555555;
+    background: #eee;
+}
+#content {
+    padding-top: 40px;
+    padding-bottom: 10px;
+    background: none;
+}
+#menu{
+    min-height: 500px;
+}
+.sbox {
+  webkit-box-shadow: 0 1px 0px rgba(0,0,0,0.12), 0 1px 1px rgba(0,0,0,0.24);
+  -moz-box-shadow: 0 1px 0px rgba(0,0,0,0.12), 0 1px 1px rgba(0,0,0,0.24);
+  -ms-box-shadow: 0 1px 0px rgba(0,0,0,0.12), 0 1px 1px rgba(0,0,0,0.24);
+  -o-box-shadow: 0 1px 0px rgba(0,0,0,0.12), 0 1px 1px rgba(0,0,0,0.24);
+  box-shadow: 0 1px 0px rgba(0,0,0,0.12), 0 1px 1px rgba(0,0,0,0.24);
+}
+#menu .icon{
+    display: block;
+    margin: 6px;
+    text-align: center;
+    width: 180px;
+    height: 228px;
+    float: left;
+}
+#menu .icon:hover{
+    background: #daeeff;
+}
+
+#menu .icon .iconimage img{
+    height: 100px;
+
+}
+#menu .icon .iconname .tituloicon{
+    font-size: 14px;
+    font-weight: bold;
+}
+#menu .icon .iconname .icondesc{
+    font-size: 11px;
+}
+
+.nav {
+    font-family:Arial,sans-serif;
+    font-size:13px;
+}
+.navbar-blue {
+    background-color:#3B5999;
+    color:#ffffff;
+    font-family:arial,sans-serif;
+    top:0;
+}
+
+.navbar-blue li > a,.navbar-toggle  {
+    color:#efefef;
+}
+
+.navbar-blue .dropdown-menu li a {color:#2A4888;}
+.navbar-blue .dropdown-menu li > a {padding-left:30px;}
+
+.navbar-blue li>a:hover, .navbar-blue li>a:focus, .navbar-blue .open, .navbar-blue .open>a, .navbar-blue .open>a:hover, .navbar-blue .open>a:focus {
+    background-color:#2A4888;
+    color:#fff;
+}
+a {
+    color:#222222;
+}
+
+a:hover {
+    text-decoration:none;
+}
+/* Animacion loading*/
+.glyphicon-refresh-animate {
+    -animation: spin .7s infinite linear;
+    -webkit-animation: spin2 .7s infinite linear;
+}
+
+@-webkit-keyframes spin2 {
+    from { -webkit-transform: rotate(0deg);}
+    to { -webkit-transform: rotate(360deg);}
+}
+
+@keyframes spin {
+    from { transform: scale(1) rotate(0deg);}
+    to { transform: scale(1) rotate(360deg);}
+}

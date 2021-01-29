@@ -1,0 +1,189 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block contenid %}
+    <div class="panel-heading">
+        <div class="row-fluid">
+            <h2>LISTADO DE {{ model }}</h2>
+            <div class="container-fluid well-sm" style="padding-top: 3%">
+                <div class="col-lg-1">
+                    <a style="border-radius: 0px" href="#" rel="action" data-json='{"action": "add","id":""}'
+                       class="btn btn-success sbox">
+                        <i class="fa fa-plus"></i>
+                        Nuevo Registro
+                    </a>
+                </div>
+                <form class="col-lg-offset-7" method="GET" action="{{ ruta }}">
+                    <div class="input-group">
+                        <div class="input-group-btn">
+                            <button type="button" class="btn btn-info">Buscar</button>
+                        </div>
+                        <input type="text" name="criterio" value="{{ criterio }}" class="form-control" onKeyPress="return sololetras(event)"
+                               placeholder="Ponga una descripción válida.." >
+                        <div class="input-group-btn">
+                            <button class="btn btn-primary" title="Buscar"><i class="fa fa-search"></i></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="panel-body">
+        <div class="panel panel-info">
+            <table class="table table-hover table-bordered table-responsive pt-2" id="websendeos">
+                <thead class="bg-primary">
+                <tr>
+                    <th>
+                        Imagen
+                    </th>
+                    <th>
+                        Nombre
+                    </th>
+                    <th>
+                        Descripción
+                    </th>
+                    <th>
+                        Cantidad
+                    </th>
+
+                    <th>
+                        Subtotal
+                    </th>
+
+                    <th>
+                        Precio
+                    </th>
+                    <th>
+                        Acción
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for fac in articulos %}
+                    <tr class="p-0 m-0">
+                        <td class="col-sm-1">
+                            <div class="pull-left image">
+                                <center> <a href="/media/{{ fac.image }}" data-lightbox="mygallery" data-title="{{ fac.nombre }}"><img  src="/media/{{ fac.image }}" title="ver imagen" class="img-fluid center" alt="Responsive image" style="width:100px; height:100px;"  ></a> </center>
+                            </div>
+                        </td>
+                        <td class="p-0 m-0">{{ fac.nombre }}</td>
+                        <td class="p-0 m-0">{{ fac.descripcion }}</td>
+                        <td class="p-0 m-0">{{ fac.cantidad }}</td>
+                        <td class="p-0 m-0">&#36;{{ fac.subtotal }}</td>
+                        <td class="p-0 m-0">&#36;{{ fac.precio }}</td>
+                        <td class="p-0 m-0">
+                            <ul class="d-md-inline-flex list-inline">
+                                <li><a class="btn btn-primary btn-sm" href="#" rel="action" data-json='{"action":"edit","id":"{{ fac.id }}"}'><i class="fa fa-edit"></i> Editar</a></li>
+                                <li><a class="btn btn-danger btn-sm" href="#modal" rel="action" data-toggle="modal" data-json='{"action":"elim","id":"{{ fac.id }}"}'><i class="fa fa-trash-o"></i> Eliminar</a></li>
+
+
+                            </ul>
+                        </td>
+                    </tr>
+                {% empty %}
+                    <tr>
+                        <td colspan="4">No existen registros</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+
+                <tfoot>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+    <!-- Pagineo -->
+    <div class="container-fluid">
+        <div class='row-fluid'>
+            <div class="span12 text-center">
+                <nav>
+                    {% if paging.num_pages > 0 %}
+                        <div class="well-sm">
+                            <ul class='pagination'>
+                                {% if paging.primera_pagina %}
+                                    <li><a href="{{ ruta }}?{% if search %}s={{ search }}&{% endif %}page=1">1</a></li>
+                                    <li><a href="{{ ruta }}?{% if search %}s={{ search }}&{% endif %}page={{ paging.ellipsis_izquierda }}" class="active">...</a></li>
+                                {% endif %}
+                                {% for pagenumber in paging.paginas %}
+                                    <li {% ifequal pagenumber page.number %}class='active'{% endifequal %}><a href="{{ ruta }}?{% if search %}s={{ search }}&{% endif %}page={{ pagenumber }}">{{ pagenumber }}</a></li>
+                                {% endfor %}
+                                {% if paging.ultima_pagina %}
+                                    <li><a href="{{ ruta }}?{% if search %}s={{ search }}&{% endif %}page={{ paging.ellipsis_derecha }}" class="active">...</a></li>
+                                    <li><a href="{{ ruta }}?{% if search %}s={{ search }}&{% endif %}page={{ paging.num_pages }}">{{ paging.num_pages }}</a></li>
+                                {% endif %}
+                            </ul>
+                        </div>
+                    {% else %}
+                        <div class="well-sm">
+                            <ul class='pagination'>
+                                {% for pagenumber in paging.page_range %}
+                                    <li {% ifequal pagenumber page.number %}class='active'{% endifequal %}><a href="{{ ruta }}?{% if search %}s={{ search }}&{% endif %}page={{ pagenumber }}">{{ pagenumber }}</a></li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    {% endif %}
+                </nav>
+            </div>
+        </div>
+    </div>
+    <!-- Fin de Pagineo -->
+{% endblock %}
+{% block frmodal %}
+    <!-- inicio formulario Modal para Eliminar -->
+    <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <form name="frmEliminar" id="frmEliminar" method="POST" action="{{ ruta }}">
+                    {% csrf_token %}
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Confirme Eliminar el Registto de {{ titulo }}.</h4>
+                    </div>
+                    <div class="modal-body">
+                        <input type="hidden" name="id" id="id" value="">
+                        <input type="hidden" name="action" value="elim">
+                        <label>Descripción:</label>
+                        <span id="descripcion"></span><br>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-danger" id="btnElimiar">Eliminar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- Final Formulario Modal-->
+{% endblock %}
+{% block jscript %}
+    <script>
+    $('#websendeos').stacktable();
+        $(function () {
+            $('#contenedor').on('click', 'a[rel="action"]', function () {
+                var data = $(this).data('json'),
+                    action = data.action,
+                    id = data.id;
+                if (action == 'elim') {
+                    var desc = $(this).parents('tr').children('td').eq(1).html();
+                    $('#descripcion').html(desc);
+                    $('#frmEliminar #id').val(id);
+                    $('#myModal').modal();
+                    //return
+                }
+                window.location = '{{ ruta }}?action=' + action + '&id=' + id;
+            });
+        });
+    </script>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+

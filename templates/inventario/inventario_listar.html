@@ -1,0 +1,138 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block contenid %}
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
+    <div class="panel-heading">
+        <div class="row-fluid">
+            <h2>LISTADO DE {{ model }}</h2>
+            <div class="container-fluid well-sm" style="padding-top: 3%">
+            </div>
+        </div>
+    </div>
+<!--    <button type="button" class="btn btn-success" id="btnPdf"
+    ><i class="fa fa-print" aria-hidden="true"></i>
+        Imprimir Reporte
+    </button>-->
+    <div class="panel-body">
+        <div class="panel panel-info">
+            <table class="table table-hover table-bordered table-responsive pt-2" id="websendeos">
+                <thead class="bg-primary">
+                <tr>
+                    <th>
+                        Material
+                    </th>
+                    <th>
+                        Descripción     </th>
+                    <th>
+                        Fecha de Ingreso
+                    </th>
+                    <th>
+                        Fecha de Salida
+                    </th>
+                    <th>
+                        Cantidad
+                    </th>
+                    <th>
+                        Precio
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for c in inventari %}
+                    <tr >
+                        <td>{{ c.material.material }}</td>
+                        <td>{{ c.get_tipoinventario_display }}</td>
+                        <td>{% if  c.fechaingreso  %} {{ c.fechaingreso }}
+                        {% endif  %}
+                        </td>
+                        <td>{% if  c.fechasalida  %} {{ c.fechasalida }}{% endif  %}</td>
+                        <td>{{ c.cantidad }}</td>
+                        <td>{{ c.precio }}</td>
+                    </tr>
+                {% empty %}
+                    <tr>
+                        <td colspan="4">No existen Registros</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+                <tfoot>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+{% endblock %}
+{% block jscript %}
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+    <script>
+        $(function () {
+                   $('#websendeos').DataTable({
+     language:{
+          "sProcessing":     "Procesando...",
+                "sLengthMenu":     "Mostrar _MENU_ registros",
+                "sZeroRecords":    "No se encontraron resultados",
+                "sEmptyTable":     "Ningún dato disponible en esta tabla =(",
+                "sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                "sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0 registros",
+                "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
+                "sInfoPostFix":    "",
+                "sSearch":         "Buscar:",
+                "sUrl":            "",
+                "sInfoThousands":  ",",
+                "sLoadingRecords": "Cargando...",
+                "oPaginate": {
+                    "sFirst":    "Primero",
+                    "sLast":     "Último",
+                    "sNext":     "Siguiente",
+                    "sPrevious": "Anterior"
+                },
+                "oAria": {
+                    "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
+                    "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+                },
+                "buttons": {
+                    "copy": "Copiar",
+                    "colvis": "Visibilidad"
+                }
+     }
+ });
+            $('#websendeos').stacktable();
+
+alert("asd");
+            var columns = ["#Material", "Descripción", "Fecha Ingreso", "Fecha Salida", "Cantidad", "Precio/u"];
+            var data = [
+                {% for c in inventari %}
+                    ['{{  c.material.material}}', '{{c.get_tipoinventario_display}}', {% if  c.fechaingreso   %}' {{ c.fechaingreso  |date:"M d, Y" }}'
+                    {% endif  %},{% if  c.fechasalida  %} '{{ c.fechasalida  |date:"M d, Y"  }}'{% endif  %},'{{ c.cantidad }}','${{ c.precio }}'],
+                {% endfor %}
+            ];
+            $('#btnPdf').click(function () {
+                //Crear documento PDF con horientación vertical
+                var doc = new jsPDF('landscape');
+                //Fuente
+                doc.setFont('helvetica');
+                //Tipo de letra negrita
+                doc.setFontType('bold');
+                //Tamaño de letra 12
+                doc.setFontSize(16);
+                //dibujar un cuadrado
+                doc.setDrawColor(0);
+                doc.setFillColor(16, 111, 44);
+                doc.rect(20, 18, 150, 12, 'F');
+                //Escribir en el documento con la función doc.text(x, y, texto);
+                doc.setTextColor(255, 255, 255);
+                doc.text(22, 25, 'Material Acciones: ' + $("#carrera #d{{ idCarr }}").text());
+                //Agregar imagen, funcion doc.addImage(src, tipo, x, y, ancho, alto);
+                //doc.addImage(logoUnemi, 'PNG', 238, 10, 28, 29);
+                doc.setTextColor(0, 0, 0);
+                doc.autoTable(columns,data,
+                    { margin:{ top: 40},
+                        theme:'grid'
+                    }
+                );
+                doc.save('Inventarioacciones.pdf');
+            });
+        });
+    </script>
+{% endblock %}

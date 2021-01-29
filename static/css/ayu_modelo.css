@@ -1,0 +1,179 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+div#contenedor{
+  width: 1200px;
+  height: 600px;
+  background-color: white;
+  margin: 0.5em auto;
+  padding: 0.5em;
+}
+div#titulo{
+  height: 5%;
+  margin: 1em;
+  background-color: white;
+}
+div#superior{
+  height: 40%;
+  margin-top: 10em;
+  margin: 0.5em;
+  background-color: white;
+}
+div#contenido{
+  height: 100%;
+  width: 45%;
+  margin: 1em;
+  background-color: white;
+  float: left;
+}
+div#contenido2{
+  height: 100%;
+  width: 45%;
+  margin: 1em;
+  background-color: white;
+  float: right;
+}
+div#final{
+  height: 5%;
+  background-color: white;
+  margin: 1em;
+}
+div#imagen{
+  height: 100%;
+  background-color: white;
+  margin: 0.5em;
+
+}
+
+div#Lateral{
+  height: 100%;
+  width: 45%;
+  background-color: gray;
+  float: right;
+  margin: 0.5em;
+}
+
+h1#tit{
+  text-align: center;
+}
+img#imagen{
+  height: 45%;
+  width: 30%;
+  margin: 15%;
+}
+img#imagen2{
+  height: 65%;
+  width: 100%;
+  margin: 10%;
+  float: right;
+}
+textarea#text{
+  margin: 25%;
+  width: 60%;
+  height: 70%;
+  font-family: cursive;
+  font-size: 20px;
+  border-radius: 8px;
+}
+video{
+  position: fixed;
+  width: 100%;
+
+}
+a{
+  margin: auto;
+  margin-left: 1em;
+  margin-right: 1em;
+  margin-top: 5em;
+  margin-bottom: 5em;
+}
+.botones{
+  margin: auto;
+  margin-left: 2em;
+  margin-right: 2em;
+  margin-top: 2em;
+  margin-bottom: 2em;
+}
+.boton {
+border: 1px solid #2e518b; /*anchura, estilo y color borde*/
+padding: 10px; /*espacio alrededor texto*/
+background-color: #2e518b; /*color botón*/
+color: #ffffff; /*color texto*/
+text-decoration: none; /*decoración texto*/
+text-transform: uppercase; /*capitalización texto*/
+font-family: 'Helvetica', sans-serif; /*tipografía texto*/
+border-radius: 20px; /*bordes redondos*/
+margin-left: 2px;
+margin-right: 2px;
+}
+.boton:hover{
+    color: #2e518b;
+    background-color: #ffffff;
+  }
+  .boton1 {
+    border: 1px solid #DB2C09; /*anchura, estilo y color borde*/
+    padding: 10px; /*espacio alrededor texto*/
+    background-color: #DB2C09; /*color botón*/
+    color: #ffffff; /*color texto*/
+    text-decoration: none; /*decoración texto*/
+    text-transform: uppercase; /*capitalización texto*/
+    font-family: 'Helvetica', sans-serif; /*tipografía texto*/
+    border-radius: 20px; /*bordes redondos*/
+    margin-left: 2px;
+    margin-right: 2px;
+  }
+  .boton1:hover{
+      color: #DB2C09;
+      background-color: #ffffff;
+    }
+.boton2 {
+  border: 1px solid #29C629; /*anchura, estilo y color borde*/
+  padding: 10px; /*espacio alrededor texto*/
+  background-color: #29C629; /*color botón*/
+  color: #ffffff; /*color texto*/
+  text-decoration: none; /*decoración texto*/
+  text-transform: uppercase; /*capitalización texto*/
+  font-family: 'Helvetica', sans-serif; /*tipografía texto*/
+  border-radius: 20px; /*bordes redondos*/
+  margin-left: 2px;
+  margin-right: 2px;
+}
+.boton2:hover{
+    color: #29C629;
+    background-color: #ffffff;
+  }
+.boton3 {
+    border: 1px solid #F3EC0A ; /*anchura, estilo y color borde*/
+    padding: 10px; /*espacio alrededor texto*/
+    background-color: #F3EC0A ; /*color botón*/
+    color: #ffffff; /*color texto*/
+    text-decoration: none; /*decoración texto*/
+    text-transform: uppercase; /*capitalización texto*/
+    font-family: 'Helvetica', sans-serif; /*tipografía texto*/
+    border-radius: 20px; /*bordes redondos*/
+    margin-right: 10px;
+    margin-left: 2px;
+    margin-right: 2px;
+}
+.boton3:hover{
+    color: #F3EC0A;
+    background-color: #ffffff;
+  }
+  .boton4 {
+      border: 1px solid #F46908 ; /*anchura, estilo y color borde*/
+      padding: 10px; /*espacio alrededor texto*/
+      background-color: #F46908 ; /*color botón*/
+      color: #ffffff; /*color texto*/
+      text-decoration: none; /*decoración texto*/
+      text-transform: uppercase; /*capitalización texto*/
+      font-family: 'Helvetica', sans-serif; /*tipografía texto*/
+      border-radius: 20px; /*bordes redondos*/
+      margin-right: 10px;
+      margin-left: 2px;
+      margin-right: 2px;
+  }
+  .boton4:hover{
+      color: #F46908;
+      background-color: #ffffff;
+    }

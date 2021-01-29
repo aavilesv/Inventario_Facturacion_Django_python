@@ -1,0 +1,115 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html>
+<head>
+  <title>Reporte de Factura</title>
+  <style type="text/css">
+
+  img.grande{
+  width: 200px; height: 200px;
+}/*
+	Color fondo: #632432;
+	Color header: 246355;
+	Color borde: 0F362D;
+	Color iluminado: 369681;
+*/
+
+
+
+table {
+   width: 100%;
+
+   border: 1px solid #000;
+}
+th, td {
+   width: 25%;
+   text-align: center;
+   vertical-align: top;
+   border: 1px solid #000;
+   border-collapse: collapse;
+   padding: 0.3em;
+   caption-side: bottom;
+}
+caption {
+   padding: 0.3em;
+   color: #fff;
+    background: #000;
+}
+th {
+   background: #eee;
+}
+
+  </style>
+
+</head>
+
+<body>
+
+
+
+         <div class="panel-heading">
+                <div class="row-fluid">
+
+                       <center> <img src="../static/img/metal.jpg" class="img-circle grande" alt="User Image"></center>
+
+                </div>
+            </div>
+ <div class="panel-body">
+
+
+<h3>Datos  del  Cliente<br>{{ compra.cliente.nombre}}</h3>
+
+    <div class="panel panel-info">
+    <H4>Detalle de Venta</H4>
+        <table class="table table-bordered" >
+            <thead >
+            <tr>
+                <th>
+                    #Codigo
+                </th>
+                <th>
+                    Material
+                </th>
+
+                <th>
+                   Cantidad
+                </th>
+                <th>
+                Precio
+                </th>
+
+            </tr>
+
+            </thead>
+
+            <tbody>
+                <tr class="" >
+                    {% for c in lista %}
+                    <td>{{ c.factura.id}}</td>
+                    <td>{{ c.articulo.nombre }} </td>
+                    <td>{{ c.cantidad }}</td>
+
+                 <td>{{ c.articulo.total }}</td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="4">No existen Registros de Compras</td>
+                </tr>
+
+            {% endfor %}
+
+            </tbody>
+
+            <tfoot>
+            </tfoot>
+
+        </table>
+    </div>
+ </div>
+
+
+
+
+</body>
+</html>

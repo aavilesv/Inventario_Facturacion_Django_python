@@ -1,0 +1,465 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block contenid %}
+    <div class="row">
+        <div class="col-md-5">
+            <div class="lock-screen-wrapper">
+                <div class="panel panel-info">
+                    <div class="panel-body">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <legend style="font-size: 15px;font-weight: bold">Buscar
+                                    </legend>
+                                    <div class="form-horizontal">
+                                        <div class="row">
+                                            <div class="form-group">
+
+                                                <label class="control-label col-md-2" for="cbcliente">Cédula o nombre:</label>
+                                                <div class="col-md-10">
+                                                    <select class="chosen-select form-control list" id="cbcliente"
+                                                            data-placeholder="Seleccione Categoria">
+                                                        <option value="" selected disabled hidden>Seleccione una Cédula o Nombre</option>
+                                                        {% for p in clientes %}
+                                                            <option value="{{ p.id }}"
+                                                                    data-cjson='{"ruc":"{{ p.nombre }}","cedula":"{{ p.ced_ruc }}","direc":"{{ p.direccion }}","email":"{{ p.email }}"}'
+
+                                                                    {{ 'selected' }} >{{ p.ced_ruc }} : {{ p.nombre }}</option>
+                                                        {% endfor %}
+                                                    </select>
+
+                                                </div>
+                                            </div>
+                                        </div></div>
+                                    <legend style="font-size: 15px;font-weight: bold">Datos del cliente
+                                    </legend>
+                                    <div class="form-horizontal">
+                                        <div class="row">
+
+
+
+
+                                            <div class="form-group">
+                                                <label class="control-label col-md-2" for="ruc">Nombre:</label>
+                                                <div class="col-md-10">
+                                                    <input id="ruc" disabled style="background-color: white;" class="form-control" type="text"
+                                                           placeholder="RUC"/>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label col-md-2" for="cedulaas">Cédula:</label>
+                                                <div class="col-md-10">
+                                                    <input id="cedulaas" disabled style="background-color: white;" class="form-control" type="text"
+                                                           placeholder="Cédula"/>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="control-label col-md-2" for="direccion">Dirección:</label>
+                                                <div class="col-md-10">
+                                                    <input id="direccion" disabled class="form-control" style="background-color: white;"
+                                                           type="text"
+                                                           placeholder="Dirección"/>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label col-md-2" for="email">Email:</label>
+                                                <div class="col-md-10">
+                                                    <input id="email" disabled readonly style="background-color: white;"
+                                                           class="form-control" type="text" placeholder="Email"/>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label col-md-2" for="fecha">Fecha:</label>
+                                                <div class="col-md-10">
+                                                    <input id="fecha" value="{{ fecha }}" disabled style="background-color: white;"
+                                                           class="form-control" type="text"
+                                                           placeholder="Fecha"/>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+        <div class="col-md-7">
+
+            <div class="lock-screen-wrapper">
+                <div class="panel panel-info">
+                    <div class="panel-body">
+                        <div class="container-fluid">
+                            <div class="">
+                                <div class="">
+                                    <div class="border border-info" >
+
+                                        <form id="frm-additem" class="form-horizontal">
+                                            <div class="form-group">
+                                                <div class="col-md-4 col-lg-offset-8">
+                                                    <button class="btn btn-primary form-control"
+                                                            id="btn-agregar" placeholder="" title="Insertar Articulo">
+                                                        <i class="glyphicon glyphicon-plus">Insertar</i>
+                                                    </button>
+                                                </div>
+                                                <legend style="font-size: 15px;font-weight: bold">
+                                                    <h3>Datos del Articulo.</h3>
+                                                </legend>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="control-label col-md-3" for="cbarticulo">Articulo:</label>
+                                                <div class="col-md-9">
+                                                    <select class="chosen-select form-control" id="cbarticulo"
+                                                            data-placeholder="Seleccione Articulo">
+                                                        <option value="">Seleccione Articulo</option>
+                                                        {% for a in articulos  %}
+                                                            <option value="{{ a.id }}"
+                                                                    data-ajson='{"id":"{{ a.id }}","precio":"{{ a.precio }}","image":"{{ a.image }}","stock":"{{ a.cantidad }}"}'>{{ a.nombre }} , {{ a.descripcion }}  </option>
+                                                        {% endfor %}
+                                                    </select>
+
+
+
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label col-md-3" for="art-cantidad">Cantidad:</label>
+                                                <div class="col-md-9">
+                                                    <input id="art-cantidad" class="form-control" required="true"
+                                                           type="number"   min="1" max="100" placeholder="Cant"/>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label  class="control-label col-md-3" for="art-precio">Precio:</label>
+                                                <div class="col-md-9">
+                                                    <input id="art-precio" style="background-color: white;" disabled
+                                                           class="form-control" type="text" required="true"
+                                                           placeholder="Precio"/>
+                                                </div>
+                                            </div>
+
+
+
+                                            <div class="form-group">
+                                                <label  class="control-label col-md-3" for="imagen">Imagen:</label>
+                                                <div class="col-md-9">
+                                                    <div class="pull-left image">
+                                                        <center> <a href="/media/46871.jpeg" id="ref" data-lightbox="mygallery" data-title="">
+                                                            <img  src="/media/46871.jpeg" id="image" title="ver imagen" class="img-fluid center" alt="Responsive image" style="width:100px; height:100px;"  ></a> </center>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <legend style="font-size: 15px;font-weight: bold">Detalle de Articulo
+                                    </legend>
+                                    <div class="">
+                                        <div class="">
+                                            <div class="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="container-fluid">
+                                        <div class="row">
+                                            <div class="col-xs-15">
+                                                <div class="table-responsive">
+                                                    <table class="table table-striped table-bordered table-responsive table-striped"
+                                                           id="websendeos" style="white-space: pre-line;">
+                                                        <thead>
+                                                        <tr class="info">
+                                                            <th>Caracteristica</th>
+                                                            <th>Precio</th>
+                                                            <th>Cantidad</th>
+                                                            <th>Total</th>
+                                                            <th class="col-xs-1">Acción</th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody id="tdetalle">
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-8 col-lg-offset-4">
+                                                <div class="panel panel-info">
+                                                    <div class="panel-heading">
+                                                        <strong class="panel-title">Pedido</strong>
+                                                    </div>
+                                                    <div class="table-responsive">
+                                                        <table class="table table-striped table-bordered table-responsive table-striped"
+                                                               style="display: block;">
+                                                            <tbody>
+
+                                                            <tr>
+                                                                <td class="text-right">
+                                                                    <div class="form-group">
+                                                                        <label class="control-label col-md-3" for="id_msubtotal">SUBTOTAL:&#36;</label>
+                                                                        <div class="col-md-9">
+                                                                            <input id="id_msubtotal" readonly="" class="form-control"
+                                                                                   type="text" placeholder="0.00" style="font-weight: bold" >
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+
+                                                            </tr>
+                                                            <tr>
+
+                                                                <td>
+
+                                                                    <div class="form-group">
+                                                                        <label class="control-label col-md-3" for="id_miva">IVA:&#36;</label>
+                                                                        <div class="col-md-9">
+                                                                            <input type="text" class="form-control " name="id_miva" maxlength="40" readonly="" style="font-weight: bold; background: white;"
+                                                                                   id="id_miva"  required="true" placeholder="12%" >
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <div class="form-group">
+                                                                        <label class="control-label col-md-3" for="id_mtotal">Total a Pagar:&#36;</label>
+                                                                        <div class="col-md-9">
+                                                                            <input type="text" class="form-control " name="id_mtotal" maxlength="40" readonly="" style="font-weight: bold; background: white;"
+                                                                                   id="id_mtotal"  required="true" placeholder="0.00" >
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+
+
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="well well-sm">
+                                        <div class="row">
+                                            <div class="col-lg-offset-1">
+
+                                                <button id="btn-registrar" class="btn btn-success"
+                                                        type="submit">
+                                                                <span id="loading"
+                                                                      class="fa fa-save"></span>
+                                                    <span id="caption"><strong>Registrar
+                                                                    </strong></span>
+                                                </button>
+                                                <button type="button" class="btn btn-danger" id="cancelar"
+                                                        onclick="window.location='{{ ruta }}'">
+                                                    <span class="fa fa-trash-o">    </span>
+                                                    Cancelar
+                                                </button>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+{% endblock %}
+{% block jscript %}
+    <script>
+        $(function () {
+            $('.chosen-select').chosen();
+            $('#cbcliente').change(function () {
+                var cliente = $('#cbcliente option:selected').data('cjson');
+                $('#ruc').val(cliente.ruc);
+                $('#cedulaas').val(cliente.cedula);
+                $('#direccion').val(cliente.direc);
+
+                $('#email').val(cliente.email);
+            });
+            $('#cbcliente').change();
+
+            $('#cbarticulo').change(function () {
+                var option = $('#cbarticulo option:selected');
+                if (option.val() != '') {
+                    var articulo = option.data('ajson');
+                    $('#art-cantidad').val(articulo.stock);
+                    //alert($('#cbarticulo').val());
+                    document.getElementById("art-cantidad").max =  $('#art-cantidad').val();
+
+                    $('#art-precio').val(articulo.precio);
+                    $('#image').attr("src","/media/"+articulo.image);
+                    $('#ref').attr("href","/media/"+articulo.image);
+                } else {
+                    $('#art-cod').val('');
+                    $('#art-cantidad').val('');
+                    $('#art-precio').val('');
+                    $('#image').attr("src","/media/46871.jpeg");
+                    $('#ref').attr("href","/media/46871.jpeg");
+                }
+            });
+
+            $('#cbarticulo').change();
+            $('#frm-additem').submit(function (e) {
+                if ($('#cbcliente').val() >0) {
+                    e.preventDefault();
+                    var option = $('#cbarticulo option:selected');
+                    var cantidad = parseInt($('#art-cantidad').val());
+                    var data = option.data('ajson');
+                    var item = new Object();
+                    item.id = data.id;
+                    item.precio = parseFloat($('#art-precio').val());
+                    item.descripcion = option.text();
+                    item.cantidad = cantidad;
+                    app.add(item);
+
+                }
+                else {
+                    swal('Información!', 'El stock está en cero');
+                }
+            });
+            $('#btn-registrar').click(function(){
+                if (app.venta.items.length > 0 && app.venta.total > 0) {
+                    if ($('#cbcliente').val()) {
+                        swal({
+                                title: '¿Estás Seguro?',
+                                text: 'Registrar Factura!',
+                                type: 'warning',
+                                showCancelButton: true,
+                                confirmButtonColor: '#3085d6',
+                                cancelButtonColor: '#d33',
+                                confirmButtonText: 'Continuar!',
+                                cancelButtonText:  'Cancelar!',
+                                closeOnConfirm: false,
+                                showLoaderOmConfirm: true
+                            },
+                            function(){
+                                app.venta.cliente = $('#cbcliente').val();
+                                app.venta.fecha = $('#fecha').val();
+                                $.ajax({
+                                    type:"GET",
+                                    url: '/scmi/factura/',
+                                    data: {
+                                        'action':'cargaventa', venta: JSON.stringify(app.venta)
+                                    },
+                                    dataType: 'json',
+                                    success: function (data) {
+                                        if (data.resp == true) {
+
+
+swal("Registrar!", "Factura realizada", "success"), function () {
+
+                    };
+
+
+
+                                            window.location.reload();
+                                        } else {
+                                            swal('Información!', data.mensaje);
+
+                                        }
+                                    }
+                                });
+                            });
+                    }else{
+                        swal('Información!', 'Debe Seleccionar Cliente');
+                    }
+                }else{
+                    swal('Información!', 'Debe Ingresar Articulos al Detalle');
+                }
+            });
+        });
+        var app = {
+            venta: {
+                //cabecera
+                fecha: '',
+                cliente: 0,
+                subtotal: 0,
+                total: 0,
+                //detalle
+                items: []
+            },
+            add: function (item) {
+                if (!this.existe(item)) {
+                    var iva =0.12;
+                    item.subtotal  =item.cantidad * item.precio;
+                    item.total = (item.subtotal)*iva+ item.subtotal;
+                    this.venta.items.push(item);
+                }
+                this.actualizar();
+                this.presentar();
+
+                return true;
+            },
+            eliminar: function (id) {
+                for (var i in this.venta.items) {
+                    if (this.venta.items[i].id == id) {
+                        this.venta.items.splice(i,1);
+                        this.actualizar();
+                        this.presentar();
+                        return true;
+                    }
+                }
+                return false;
+            },
+            existe: function (item) {
+                for (var i in this.venta.items) {
+                    if (item.id == this.venta.items[i].id) {
+                        this.venta.items[i].cantidad += item.cantidad;
+                        this.venta.items[i].precio = item.precio;
+                        this.venta.items[i].subtotal = this.venta.items[i].cantidad * item.precio;
+                        this.venta.items[i].total = (this.venta.items[i].subtotal ) + this.venta.items[i].iva;
+                        return true;
+                    }
+                }
+                return false;
+            },
+            actualizar: function () {
+                this.venta.subtotal = 0;
+                var ivaa =0.12;
+                this.venta.descuento = 0;
+                this.venta.total = 0;
+                for (var item of this.venta.items) {
+                    this.venta.subtotal += item.subtotal;
+                    this.venta.total += (item.subtotal)*ivaa+ item.subtotal;
+                }
+                $('#id_msubtotal').val(this.venta.subtotal.toFixed(2));
+                $('#id_mtotal').val(this.venta.total.toFixed(2));
+            },
+            presentar: function () {
+                $('#tdetalle').html('');
+                for (var item of this.venta.items ){
+                    var tr = '<tr>';
+
+                    tr += '<td id="des">' + item.descripcion + '</td>';
+                    tr += '<td>' + item.precio + '</td>';
+                    tr += '<td>' + item.cantidad + '</td>';
+                    tr += '<td>' + item.subtotal + '</td>';
+                    tr +='<td class=""><button onclick="app.eliminar('+ item.id +')"  title="Eliminar"class="btn btn-danger"><i class="fa fa-trash-o"></i> </button></td>';
+                    tr += '</tr>';
+                    $('#tdetalle').append(tr);
+                }
+            },
+        }
+    </script>
+{% endblock %}

@@ -1,0 +1,128 @@
+
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block contenid %}
+
+    <div class="container-fluid">
+        <div class="col-xs-12 col-md-2"></div>
+        <div class="col-xs-12 col-md-7">
+            <br>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3> REGISTRO DE ARTICULO</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-lg-10">
+                            <form class="form-horizontal" name="frmUsuario"  method="post" action="{{ ruta }}" enctype="multipart/form-data" >
+                                {% csrf_token %}
+                                <input type="hidden" name="id" value="{{ id }}">
+                                <input type="hidden" name="action" value="{{ action }}">
+
+                                <div class="form-group">
+                                    <label class="control-label col-md-3">Articulo:</label>
+                                    <div class="col-md-9">
+                                        <input type="text" class="form-control " name="articulo" maxlength="50" onKeyPress="return sololetras(event)"
+                                               id="articulo" value ='{{ articulos.nombre }}' required="true">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-3">Descripcion:</label>
+                                    <div class="col-md-9">
+                                        <input type="text" class="form-control " name="descripcion" maxlength="50"
+                                               id="descrpcion" value ='{{ articulos.descripcion }}' required="true">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-3">Cantidad:</label>
+                                    <div class="col-md-9">
+                                        <input type="number" class="form-control " name="cantidad" maxlength="20" min="1" max="600" onKeyPress="return soloNumeros(event)"
+                                               id="subtotal" autocomplete="on" value ='{{ articulos.cantidad }}' required="true" >
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label col-md-3">Precio/u:$</label>
+                                    <div class="col-md-9">
+                                        <input type="text" class="form-control " name="precio" maxlength="10" onKeyPress="return soloNumeros(event)"
+                                               id="precio" value ='{{ articulos.subtotal }}' required="true">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="0.12" name="iva" id="ivaaa">
+                                            <label class="form-check-label" for="defaultCheck1">
+                                                Iva 12%
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {% if articulos %}
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3"></label>
+                                        <div class="col-md-9">
+                                            <img  src="/media/{{ articulos.image }}"
+                                                  title="ver imagen" class="img-fluid center"
+                                                  alt="Responsive image" style="width:100px; height:100px;">
+                                        </div>
+                                    </div>
+                                {% endif %}
+                                <div class="form-group">
+                                    <label class="control-label col-md-3">Imagen:</label>
+                                    <div class="col-md-9">
+                                        <input type="file" accept="image/*" class="form-control " name="image"
+                                               id="image" value ='http://127.0.0.1:8000/media/{{ articulos.image }}'   required="true">
+                                    </div>
+                                </div>
+                                <div class="btn btn-group col-md-offset-3 ">
+                                    <div class="col-md-2">
+                                        <button type="submit" id="btnsend" class=" btn btn-primary "><span class="fa fa-save"></span> Guardar</button>
+                                    </div>
+                                    <div class="col-md-2 col-md-offset-3">
+                                        <a href="/scmi/articulo/" id="btnSalir" class="btn btn-danger"> <i class="fa fa-remove"></i> Cancelar</a>
+                                    </div>
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block jscript %}
+    <script>
+        $('#image').on('change',function () {
+            var rutaimg = $('#image').val();
+            var extension = rutaimg.substring(rutaimg.length - 3, rutaimg.length);
+            if (extension.toLowerCase() === 'png' || extension.toLowerCase() === 'jpg') {
+                $('#image').fadeIn("fast").attr('src', URL.createObjectURL(event.target.files[0]));
+            }
+            else{
+
+                $("#image").val('');
+                swal("Info!","Por favor elegir una imagen");
+            }});
+        {% if  articulos.subtotal %}
+            if ({{ articulos.subtotal }}!={{ articulos.precio }}){
+            $("#ivaaa").prop("checked", true);
+        }
+        {% endif %}
+
+
+        $('#ivaaa').click(function(){
+            if ( $('#precio').val()!='') {
+                if($('#ivaaa').prop('checked') ) {
+                    var valor=parseFloat($('#precio').val())*0.12+parseFloat($('#precio').val());
+                    swal("Info!","Precio Total: $"+ Math.round(valor));
+                }
+            }
+            else {
+                $("#ivaaa").prop("checked", false);
+                swal("Info!","Ingrese precio por unidad");
+
+            }
+        });
+
+    </script>
+{% endblock %}
+

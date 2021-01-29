@@ -1,0 +1,170 @@
+
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+
+{% block contenid %}
+
+               <div class="container-fluid">
+                               <div class="col-xs-12 col-md-2"></div>
+                               <div class="col-xs-12 col-md-7">
+                                 <br>
+                                 <div class="panel panel-default">
+                                   <div class="panel-heading">
+                                        <h3> REGISTRO DE PERFIL DE EMPRESA</h3>
+                                   </div>
+
+                                   <div class="panel-body">
+                                     <div class="row">
+                                         <div class="col-lg-10">
+                                               <form class="form-horizontal" name="frmUsuario"  method="post" action="{{ ruta }}" enctype="multipart/form-data" >
+                                                {% csrf_token %}
+                    <input type="hidden" name="id" value="{{ id }}">
+                    <input type="hidden" name="action" value="{{ action }}">
+                                                 <div class="form-group">
+
+                                                 </div>
+
+                                                 <div class="form-group">
+                                                      <label class="control-label col-md-3">Nombre de Empresa:</label>
+                                                     <div class="col-md-9">
+                                                         <input type="text" class="form-control " name="nombre" maxlength="40" onKeyPress="return sololetras(event)"
+                                                                id="nombre" value ='{{ empresa.nombre }}' required="true">
+                                                     </div>
+                                                 </div>
+
+
+                                                         <div class="form-group">
+                                                        <label class="control-label col-md-3">RUC:</label>
+                                                          <div class="col-md-9">
+                                                              <input type="text" class="form-control " name="ruc" minlength="13" maxlength="15" onKeyPress="return soloNumeros(event)"
+                                                                       id="ruc" value ='{{ empresa.cedula }}' >
+                                                          </div>
+                                                      </div>
+
+
+                                                      <div class="form-group">
+                                                          <label class="control-label col-md-3">Dirección:</label>
+                                                          <div class="col-md-9">
+                                                              <input type="text" class="form-control " name="direccion" maxlength="20"
+                                                                     id="direccion" value ='{{ empresa.direcion }}' required="true" >
+                                                          </div>
+                                                      </div>
+                                                      <div class="form-group">
+                                                          <label class="control-label col-md-3">Celular:</label>
+                                                          <div class="col-md-9">
+                                                              <input type="text" class="form-control " name="Celular" minlength="10" maxlength="10" onKeyPress="return soloNumeros(event)"
+                                                                     id="Celular" value ='{{ empresa.celular }}' required="true">
+                                                          </div>
+                                                      </div>
+
+
+                                                   {% if empresa %}
+                                                    <div class="form-group">
+                                                          <label class="control-label col-md-3"></label>
+                                                          <div class="col-md-9">
+
+                                        <img  src="/media/{{ empresa.image }}" title="ver imagen" class="img-fluid center" alt="Responsive image" style="width:100px; height:100px;"  >
+                                                          </div>
+                                                      </div>{% endif %}
+
+                                                      <div class="form-group">
+
+                                                          <label class="control-label col-md-3">Imagen:</label>
+                                                          <div class="col-md-9">
+                                                              <input type="file" class="form-control " name="image"
+                                                                     id="image" value ='{{ empresa.image }}'   required="true">
+                                                          </div>
+                                                      </div>
+
+
+
+
+
+
+                                                      <div class="btn btn-group col-md-offset-3 ">
+                                                          <div class="col-md-2">
+
+                                                 <button type="submit" id="btnsend" class=" btn btn-primary "><span class="fa fa-save"></span> Guardar</button>
+                                                          </div>
+
+                                                          <div class="col-md-2 col-md-offset-3">
+                                                              <a href="/scmi/perfil/" id="btnSalir" class="btn btn-danger"> <i class="fa fa-remove"></i> Cancelar</a>
+                                                           </div>
+
+
+      </div>
+                                     </div>
+                                       </form>
+                                    </div>
+                                    <div class="panel-footer">
+                                        <div class="row"> <!-- Paginación de Registros-->
+                                          <br>
+                                        </div>
+                                    </div>
+                            </div>
+                                  </div>
+                          </div>
+                        </div>
+                      </div>
+                </div>
+            </div>
+
+
+
+
+
+<script  type="text/javascript">
+
+
+
+
+function sololetras(e) {
+    tecla = (document.all) ? e.keyCode : e.which; // 2
+    if (tecla == 8)
+        return true; // 3
+    patron = /[A-Za-z\s]/; // 4
+    te = String.fromCharCode(tecla); // 5
+    return patron.test(te); // 6
+}
+function soloNumeros(e) {
+
+    var key = window.Event ? e.which : e.keyCode
+    return (key >= 48 && key <= 57)
+}
+function soloNumerospunto(e) {
+    var key = window.Event ? e.which : e.keyCode
+    return ((key >= 48 && key <= 57 ) || key ==46 && validas())
+}
+
+
+
+</script>
+
+{% endblock %}
+
+
+
+{% block jscript %}
+
+    <script>
+
+     $('#image').on('change',function () {
+
+           var rutaimg = $('#image').val();
+                var extension = rutaimg.substring(rutaimg.length - 3, rutaimg.length);
+                if (extension.toLowerCase() === 'png' || extension.toLowerCase() === 'jpg') {
+                    $('#image').fadeIn("fast").attr('src', URL.createObjectURL(event.target.files[0]));
+
+                }
+     else{
+         $("#image").val('');
+         swal('Info!', 'Por favor elegir una imagen');
+
+                }});
+
+
+
+    </script>
+{% endblock %}
+

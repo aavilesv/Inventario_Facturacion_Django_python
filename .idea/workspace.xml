@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoTestManager">
+    <enabled-run-configurations>
+      <run-configuration type="tests" name="Unittests in tests_functional.py" />
+    </enabled-run-configurations>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="8e3a616a-4142-4431-9b2a-bf7652f9f1c3" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/tesisval$viewsestadistica.coverage" NAME="viewsestadistica Coverage Results" MODIFIED="1570065499842" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/scmi" />
+    <SUITE FILE_PATH="coverage/tesisval$SVGtoPDFfromCommaListValuesFile.coverage" NAME="SVGtoPDFfromCommaListValuesFile Coverage Results" MODIFIED="1570061189507" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CertificadosCVS2SVG2PDF-master" />
+    <SUITE FILE_PATH="coverage/tesisval$Unittests_in_tests_functional_py.coverage" NAME="Unittests in tests_functional.py Coverage Results" MODIFIED="1570063191507" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/factura-pdf-develop/tests" />
+  </component>
+  <component name="DjangoConsoleOptions" custom-start-script="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)">
+    <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="CSS File" />
+        <option value="JavaScript File" />
+        <option value="HTML File" />
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectId" id="1WwMBARQiIHil0XRaBTWY8GpY2H" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="ToolWindowStructure.ShowToolbar" value="false" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="settings.editor.splitter.proportion" value="0.2224694" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="G:\donde\tesisval\templates\seguridad" />
+      <recent name="G:\donde\tesisval\scmi" />
+      <recent name="C:\Users\GOYO\Desktop\FInalTesis\tesisval\static\js" />
+      <recent name="C:\Users\GOYO\Desktop\FInalTesis\tesisval\static\css" />
+      <recent name="C:\Users\GOYO\Desktop\FInalTesis\tesisval\scmi" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\GOYO\Desktop\FInalTesis\tesisval\templates" />
+      <recent name="C:\Users\GOYO\Desktop\FInalTesis\tesisval\static\js" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Django server.tesisval">
+    <configuration name="SVGtoPDFfromCommaListValuesFile" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="tesisval" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/CertificadosCVS2SVG2PDF-master" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/CertificadosCVS2SVG2PDF-master/SVGtoPDFfromCommaListValuesFile.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="viewsestadistica" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="tesisval" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/scmi" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/scmi/viewsestadistica.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="tesisval" type="Python.DjangoServer" factoryName="Django server">
+      <module name="tesisval" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+        <env name="DJANGO_SETTINGS_MODULE" value="tesisval.settings" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="launchJavascriptDebuger" value="false" />
+      <option name="port" value="8000" />
+      <option name="host" value="" />
+      <option name="additionalOptions" value="" />
+      <option name="browserUrl" value="" />
+      <option name="runTestServer" value="false" />
+      <option name="runNoReload" value="false" />
+      <option name="useCustomRunCommand" value="false" />
+      <option name="customRunCommand" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Unittests in G:/donde/tesisval/factura-pdf-develop/tests/tests_functional.py" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+      <module name="tesisval" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/factura-pdf-develop/tests" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;$PROJECT_DIR$/factura-pdf-develop/tests/tests_functional.py&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.viewsestadistica" />
+        <item itemvalue="Python tests.Unittests in G:/donde/tesisval/factura-pdf-develop/tests/tests_functional.py" />
+        <item itemvalue="Python.SVGtoPDFfromCommaListValuesFile" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="8e3a616a-4142-4431-9b2a-bf7652f9f1c3" name="Default Changelist" comment="" />
+      <created>1565680351764</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1565680351764</updated>
+      <workItem from="1565680572713" duration="6059000" />
+      <workItem from="1565720688892" duration="2466000" />
+      <workItem from="1565723656772" duration="8149000" />
+      <workItem from="1565959745706" duration="1479000" />
+      <workItem from="1566143353476" duration="3764000" />
+      <workItem from="1566148354813" duration="368000" />
+      <workItem from="1566149337991" duration="1754000" />
+      <workItem from="1566157762220" duration="9661000" />
+      <workItem from="1566179438735" duration="11660000" />
+      <workItem from="1566656098235" duration="39203000" />
+      <workItem from="1566737838419" duration="12137000" />
+      <workItem from="1566753656798" duration="19497000" />
+      <workItem from="1566828648280" duration="731000" />
+      <workItem from="1567193948781" duration="1199000" />
+      <workItem from="1567197744821" duration="103000" />
+      <workItem from="1567469715930" duration="10344000" />
+      <workItem from="1567610013068" duration="29638000" />
+      <workItem from="1567707526190" duration="12247000" />
+      <workItem from="1567779902197" duration="24086000" />
+      <workItem from="1567951781217" duration="8069000" />
+      <workItem from="1568167996397" duration="58000" />
+      <workItem from="1568251535698" duration="11810000" />
+      <workItem from="1568383607967" duration="20639000" />
+      <workItem from="1568466536652" duration="42351000" />
+      <workItem from="1568561370564" duration="10930000" />
+      <workItem from="1568576477031" duration="2033000" />
+      <workItem from="1568597105761" duration="5689000" />
+      <workItem from="1568657172988" duration="2006000" />
+      <workItem from="1568928226081" duration="5619000" />
+      <workItem from="1568956942392" duration="4707000" />
+      <workItem from="1569074640587" duration="1782000" />
+      <workItem from="1569188783759" duration="13641000" />
+      <workItem from="1569279479936" duration="22360000" />
+      <workItem from="1569594379162" duration="41480000" />
+      <workItem from="1569682485564" duration="12265000" />
+      <workItem from="1569783265521" duration="14697000" />
+      <workItem from="1569852164257" duration="23269000" />
+      <workItem from="1570060348755" duration="11956000" />
+      <workItem from="1570110179101" duration="10507000" />
+      <workItem from="1570197720786" duration="24106000" />
+      <workItem from="1570459811195" duration="6453000" />
+      <workItem from="1570899727326" duration="3967000" />
+      <workItem from="1570985650840" duration="25997000" />
+      <workItem from="1571072025801" duration="5128000" />
+      <workItem from="1571092844440" duration="3481000" />
+      <workItem from="1571433576262" duration="543000" />
+      <workItem from="1571780366162" duration="297000" />
+      <workItem from="1571844162139" duration="1205000" />
+      <workItem from="1571932848530" duration="18168000" />
+      <workItem from="1571978400217" duration="4813000" />
+      <workItem from="1572013684405" duration="3958000" />
+      <workItem from="1572022782806" duration="12017000" />
+      <workItem from="1572044612736" duration="7987000" />
+      <workItem from="1572098311057" duration="11844000" />
+      <workItem from="1572143527898" duration="8636000" />
+      <workItem from="1572270774930" duration="14831000" />
+      <workItem from="1572833058934" duration="11438000" />
+      <workItem from="1572960062890" duration="14419000" />
+      <workItem from="1572988210071" duration="3799000" />
+      <workItem from="1572993911987" duration="1619000" />
+      <workItem from="1572996709142" duration="5634000" />
+      <workItem from="1573052637818" duration="3154000" />
+      <workItem from="1574264299725" duration="888000" />
+      <workItem from="1574353700808" duration="126000" />
+      <workItem from="1574354347963" duration="20189000" />
+      <workItem from="1578754572470" duration="26168000" />
+      <workItem from="1578841527298" duration="21981000" />
+      <workItem from="1578924127918" duration="26518000" />
+      <workItem from="1579009237772" duration="16319000" />
+      <workItem from="1579187024794" duration="1189000" />
+      <workItem from="1579208963950" duration="3706000" />
+      <workItem from="1579448052212" duration="22440000" />
+      <workItem from="1579531644533" duration="13058000" />
+      <workItem from="1579812619125" duration="15429000" />
+      <workItem from="1579874993913" duration="9234000" />
+      <workItem from="1580056078644" duration="8122000" />
+      <workItem from="1580080648151" duration="918000" />
+      <workItem from="1580408894372" duration="1127000" />
+      <workItem from="1580410403278" duration="5558000" />
+      <workItem from="1580416517445" duration="2715000" />
+      <workItem from="1580419590522" duration="7738000" />
+      <workItem from="1580601455850" duration="5018000" />
+      <workItem from="1580608264865" duration="3850000" />
+      <workItem from="1580760875211" duration="358000" />
+      <workItem from="1580827751735" duration="6465000" />
+      <workItem from="1580859603907" duration="3883000" />
+      <workItem from="1580911643760" duration="29247000" />
+      <workItem from="1580948645493" duration="17726000" />
+      <workItem from="1580993394988" duration="7347000" />
+      <workItem from="1581085207356" duration="378000" />
+      <workItem from="1581090767735" duration="1327000" />
+      <workItem from="1581741744363" duration="4508000" />
+      <workItem from="1581779570872" duration="11663000" />
+      <workItem from="1581803394650" duration="9964000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TodoView" selected-index="1">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="325" y="133" key="FileChooserDialogImpl" timestamp="1581085565065">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="325" y="133" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1581085565065" />
+    <state width="1323" height="145" key="GridCell.Tab.0.bottom" timestamp="1581815529104">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1323" height="145" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1581815529104" />
+    <state width="1323" height="145" key="GridCell.Tab.0.center" timestamp="1581815529104">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1323" height="145" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1581815529104" />
+    <state width="1323" height="145" key="GridCell.Tab.0.left" timestamp="1581815529104">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1323" height="145" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1581815529104" />
+    <state width="1323" height="145" key="GridCell.Tab.0.right" timestamp="1581815529104">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1323" height="145" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1581815529104" />
+    <state width="1323" height="214" key="GridCell.Tab.1.bottom" timestamp="1581815195292">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1323" height="214" key="GridCell.Tab.1.bottom/0.0.1366.728@0.0.1366.728" timestamp="1581815195292" />
+    <state width="1323" height="214" key="GridCell.Tab.1.center" timestamp="1581815195292">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1323" height="214" key="GridCell.Tab.1.center/0.0.1366.728@0.0.1366.728" timestamp="1581815195292" />
+    <state width="1323" height="214" key="GridCell.Tab.1.left" timestamp="1581815195292">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1323" height="214" key="GridCell.Tab.1.left/0.0.1366.728@0.0.1366.728" timestamp="1581815195292" />
+    <state width="1323" height="214" key="GridCell.Tab.1.right" timestamp="1581815195292">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1323" height="214" key="GridCell.Tab.1.right/0.0.1366.728@0.0.1366.728" timestamp="1581815195292" />
+    <state x="-27" y="0" width="916" height="728" key="SettingsEditor" timestamp="1581090796151">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="-27" y="0" width="916" height="728" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1581090796151" />
+    <state x="384" y="189" key="com.intellij.ide.util.TipDialog" timestamp="1581803394794">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="384" y="189" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1581803394794" />
+    <state x="389" y="0" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1581802133079">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="389" y="0" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1366.728@0.0.1366.728" timestamp="1581802133079" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <default-breakpoints>
+        <breakpoint type="python-exception">
+          <properties notifyOnTerminate="true" exception="BaseException">
+            <option name="notifyOnTerminate" value="true" />
+          </properties>
+        </breakpoint>
+      </default-breakpoints>
+    </breakpoint-manager>
+    <watches-manager>
+      <configuration name="Python.DjangoServer">
+        <watch expression="data['hoy']" />
+      </configuration>
+    </watches-manager>
+  </component>
+</project>

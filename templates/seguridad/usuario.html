@@ -1,0 +1,228 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block contenid %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+    <br>
+    <div class="col-xs-12 col-md-1"></div>
+    <div class="col-xs-12 col-md-10">
+    <div class="container-fluid">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 CLASS="text-center">PERFIL DE USUARIO</h3>
+            </div>
+            <div class="panel-body">
+                <br>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-11  ">
+                        <div class="row">
+                            <div class="hideden-xs col-sm-3 col-md-3 col-lg-offset-2">
+                               <h2 class="animated infinite bounce" > Usuario</h2> <img class="img-responsive animated infinite jello" src="/static/img/registro.png">
+                            </div>
+                            <div class="col-xs-12 col-sm-9 col-md-9 col-lg-7">
+                                <div class="form-horizontal" name="frmUsuario"  action="">
+                                    <div class="form-group">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-6">Nombre de usuario:</label>
+                                        <div class="col-md-6">
+                                            <input type="text" class="form-control " name="username" maxlength="40" disabled  style="background: white;"
+                                                   id="username" value ='{{ usuario.username }}' >
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-6">Nombre:</label>
+                                        <div class="col-md-6">
+                                            <input type="text" class="form-control " name="first_name" minlength="13" maxlength="15" disabled  style="background: white;"
+                                                   id="first_name" value ='{{ usuario.first_name }}' >
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-6">Apellidos:</label>
+                                        <div class="col-md-6">
+                                            <input type="text" class="form-control " name="last_name" maxlength="20"
+                                                   id="last_name" value ='{{ usuario.last_name }}' disabled  style="background: white;" >
+                                        </div>
+                                    </div>
+                                      <div class="form-group">
+                                        <label class="control-label col-md-6">Contraseña:</label>
+                                        <div class="col-md-6">
+                                            <input type="password" class="form-control " disabled name="" style="background: white;"  maxlength="10"
+                                                   id="" value ='{{ usuario.password }}'>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-6">Email:</label>
+                                        <div class="col-md-6">
+                                            <input type="text" class="form-control " disabled name="email" style="background: white;"  maxlength="40"
+                                                   id="email" value ='{{ usuario.email }}'>
+                                        </div>
+                                    </div>
+                                     <div class="btn btn-group col-md-offset-3 ">
+                                    <div class="col-md-2">
+
+<a class="btn btn-primary btn-sm" href="#modall" rel="action" data-toggle="modal" data-json='{"action":"edit","id":"{{ usuario.id }}"}'><i class="fa fa-edit"></i>Editar</a>
+
+                                    </div>
+                                    <div class="col-md-2 col-md-offset-3">
+
+<a class="btn btn-success btn-sm" href="#modal" rel="action" data-toggle="modal" data-json='{"action":"elim","id":"{{ usuario.id }}"}'><i class="fa fa-key"></i> Cambiar Contraseña</a>
+                                    </div>
+
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div></div>
+            </div>
+
+        </div>
+    </div>
+    </div>
+{% endblock %}
+
+
+
+{% block frmodal %}
+    <!-- inicio formulario Modal para Eliminar -->
+
+
+    <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <form name="frmEliminar" id="frmEliminar" method="POST" action="{{ ruta }}"  onsubmit="return contraseñaa()">
+                    {% csrf_token %}
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Cambiar la contraseña</h4>
+
+                    </div>
+
+                    <div class="modal-body">
+                        <input type="hidden" name="id" id="id" value="">
+                        <input type="hidden" name="action" value="contra">
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-lg-12 center-block">
+                                    <div class="form-group">
+                                        <label class="control-label "><i class="Estrellass"></i> Contreseña:</label>
+                                        <div class="col-md-5">
+                                            <input type="password" style="background-color: white;" class="form-control" id="contraseña" onblur="myFunction()" value="" name="contraseña"  maxlength="15" min="4" max="600" required="true" >
+
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label "><i class="Estrellass"></i> Nueva Contreseña:</label>
+                                        <div class="col-md-5">
+                                            <input type="password" class="form-control" id="nuevacontraseña" name="nuevacontraseña" maxlength="15"  minlength="6"                                  id="subtotal" value ='' required="true" >
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label"><i class="Estrellass"></i> Confirmar nueva contraseña:</label>
+                                        <div class="col-md-5">
+                                            <input type="password" class="form-control" id="confirmarcontraseña" name="confirmarcontraseña" maxlength="15" minlength="6"                                    id="subtotal" value ='' required="true" >
+                                        </div>
+                                    </div>
+                                </div></div></div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" id="btnca" data-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-success" id="btncambiar">Cambiar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- Final Formulario Modal-->
+{% endblock %}
+{% block jscript %}
+
+    <script>
+
+   {% if messages %}
+            {% for message in messages %}
+                swal('Información!', '{{ message }}');
+            {% endfor %}
+        {% endif %}
+
+    var bandera =false;
+
+        var b=false;
+        function contraseñaa(){
+            return b;
+        }
+
+        $('#btncambiar').click(function () {
+
+            if ($('#nuevacontraseña').val() === $('#confirmarcontraseña').val())
+            {
+                if(bandera){
+
+                    b=true;
+                    contraseñaa();
+                }else {
+                      swal('Info!', 'Ingresar la contraseña Correcta');
+                }
+            }
+            else
+            {    swal('Info!', 'Nueva contraseña no coinciden');
+                $("#nuevacontraseña").focus();}
+        });
+        $("#contraseña").change(function(){
+
+            $.ajax({
+                type:"GET",
+                url: '{{ ruta }}',
+                data: {
+                    'action':'verificar','contraseña':$('#contraseña').val()
+                },
+                dataType: 'json',
+                success: function (data) {
+
+                    if (data.resp == true) {
+
+                        document.getElementById("contraseña").disabled = true;
+
+                        bandera = true;
+                        document.getElementById("contraseña").style.borderColor = null;
+
+
+
+                    } else {
+                        bandera =false;
+                        alertify.alert("Contraseña erronea");
+
+                        document.getElementById('contraseña').focus();
+
+                        document.getElementById("contraseña").style.borderColor = "yellow";
+
+
+
+                    }
+                }
+            });
+
+
+        });
+
+        $(function () {
+            $('#contenedor').on('click', 'a[rel="action"]', function () {
+                var data = $(this).data('json'),
+                    action = data.action,
+                    id = data.id;
+                if (action == 'elim') {
+                    var desc = $(this).parents('tr').children('td').eq(0).html();
+                    $('#descripcion').html(desc);
+                    $('#frmEliminar #id').val(id);
+                    $('#modal').modal();
+                    //return
+                }
+                window.location = '{{ ruta }}?action=' + action + '&id=' + id;
+            });
+        });
+
+    </script>
+{% endblock %}
+

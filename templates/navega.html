@@ -1,0 +1,73 @@
+{% load staticfiles %}
+<aside class="main-sidebar">
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+        <!-- Sidebar user panel -->
+        <div class="user-panel">
+            <div class="pull-left image">
+                {% if empresass.image %}
+                    <img src="/media/{{ empresass.image }}"  class="img-circle" alt="User Image" >
+                {% else %}
+                    <img src="{% static "images/logos/"%}{{ logo }}" class="img-circle" alt="User Image">
+                {% endif %}
+
+            </div>
+            <div class="pull-left info">
+                <p>{{ usuario.first_name }} {{ usuario.last_name }}</p>
+                <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+            </div>
+        </div>
+
+        <ul class="sidebar-menu" data-widget="tree">
+
+            <li class="header"><h4 style="border-color: white;">Menú de Navegación </h4></li>
+<li><a href="/">
+                        <span>Inicio</span>
+                        <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+                    </a></li>
+            {% for grupo in grupos %}
+                <li class="active treeview">
+                    <a href="#">
+                        <span> {{ grupo.nombre }}</span>
+                        <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+                    </a>
+
+                    <ul class="treeview-menu" >
+                        {% for modulo in grupo.modulos_activos %}
+                            <li><a href="{{ modulo.url }}"></i>{{ modulo.nombre }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </li>
+
+
+
+            {% endfor %}
+
+
+
+        </ul>
+    </section>
+    <!-- /.sidebar -->
+</aside>
+
+
+{% block jscript %}
+    <script>
+        $(document).on('click', '.panel-heading span.clickable', function (e) {
+            var $this = $(this);
+            if (!$this.hasClass('panel-collapsed')) {
+                $this.parents('.panel').find('.panel-body').slideUp();
+                $this.addClass('panel-collapsed');
+                $this.find('i').removeClass('glyphicon-chevron-up').addClass('glyphicon-chevron-down');
+            } else {
+                $this.parents('.panel').find('.panel-body').slideDown();
+                $this.removeClass('panel-collapsed');
+                $this.find('i').removeClass('glyphicon-chevron-down').addClass('glyphicon-chevron-up');
+            }
+        })
+    </script>
+{% endblock %}

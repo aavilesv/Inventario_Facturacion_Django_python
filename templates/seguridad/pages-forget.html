@@ -1,0 +1,94 @@
+
+
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <title>{{ titulo }}</title>
+    <link href="/static/css/sweetalert.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="/static/css/index.css">
+    <link href="/static/css/alertify.core.css" rel="stylesheet" type="text/css"/>
+    <link href="/static/css/alertify.bootstrap.css" rel="stylesheet" type="text/css"/>
+    <!--JQUERY-->
+
+
+    <!-- FRAMEWORK BOOTSTRAP para el estilo de la pagina-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+    <!-- Los iconos tipo Solid de Fontawesome-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css">
+    <script src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="/static/js/alertify.js" type="text/javascript"></script>
+    <script src="/static/js/sweetalert.min.js" type="text/javascript"></script>
+    <!-- Nuestro css-->
+    <link rel="stylesheet" type="text/css" href="static/css/index.css" th:href="@{/css/index.css}">
+
+</head>
+<body>
+
+<div class="modal-dialog text-center">
+
+    <div class="col-sm-12 main-section">
+
+        <div class="modal-content">
+
+
+            <form class="col-17" method="post" id="frm-login">
+
+                {% csrf_token %}
+                <div class="form-group">
+
+                    <br>    <h4> TALLER CAROLINA HERRERA</h4>
+                      <div class="col-sm-8 offset-2"><div class="center-block"><h4 style="background: white;   height: 100%; width: 100%; margin:2px; background-color:#00A6C7;
+                            font-size: 20px; text-align:center; padding-top: auto; word-wrap:break-word; border-radius: 60px/20px;"
+                      class="center-block">
+                          RESTAURAR CONTRASEÑA</h4></div></div>
+                </div>
+                <div class="form-group" id="user-group">
+                    <input type="text" class="form-control" required placeholder="Nombre de usuario" name="usuario"/>
+                </div>
+                <input type="hidden" name="action" value="add">
+                <div class="form-group" id="email-group">
+                    <input type="email" class="form-control"  required placeholder="Correo Electronico" name="correo"/>
+                </div>
+                <button type="submit" id="btnlogin" class="btn btn-primary btn-flat m-b-15"><i class="fas fa-sign-in-alt"></i>  Enviar </button>
+
+            </form>
+            <br>
+            <a href="/seguridad/logout/" id="" ><i class="fas fa-reply"></i>  Regresar </a>
+
+        </div>
+    </div>
+
+</div>
+
+
+
+<script src="/static/js/jquery-3.3.1.min.js"></script>
+<script src="/static/js/all.js"></script>
+
+<script>
+
+    {% if messages %}
+
+        {% for message in messages %}
+            swal('Información!', '{{ message }}');
+
+
+
+        {% endfor %}
+
+    {% endif %}
+</script>
+</body>
+</html>

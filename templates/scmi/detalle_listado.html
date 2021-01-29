@@ -1,0 +1,147 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block contenid %}
+    <div class="panel-body">
+        <div class="panel panel-info">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <div class="row-fluid">
+                        <h2>DETALLE DE {{ model }}</h2>
+                    </div>
+                </div>
+                <TABLE BORDER class="table table-hover table-bordered table-responsive pt-1">
+                    <TR><TH>Codigo:</TH>
+                        <TD>{{ compraa.id }}</TD>
+                    <TR><TH>Proveedor</TH>
+                        <TD>{{ compraa.cliProentidad.nombre }}</TD>
+                    <TR><TH>Fecha de Compra</TH>
+                        <TD>{{ compraa.fecha }}</TD>
+                    <TR><TH>Total</TH>
+                        <TD>&#36;{{ compraa.total }}</TD>
+                </TABLE>
+            </div>
+            <div class="panel panel-info">
+
+                <div class="table-responsive">
+                    <table class="table table-hover table-bordered table-responsive pt-2" id="websendeos">
+                        <thead class="bg-primary">
+                        <tr>
+                            <th>
+                                #Codigo
+                            </th>
+                            <th>
+                                Material
+                            </th>
+                            <th>
+                                Cantidad
+                            </th>
+                            <th>
+                                Precio/u
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for c in detallee %}
+                            <tr >
+                                <td>{{ c.material.id}}</td>
+                                <td>{{ c.material.material }}   {{ c.material.tipo.nombre }}</td>
+                                <td>{{ c.cantidad }}</td>
+                                <td>&#36;{{ c.valor }}</td>
+                            </tr>
+                        {% empty %}
+                            <tr>
+                                <td colspan="4">No existen Registros de Compras</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                        <tfoot>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-offset-8">
+            <button type="button" class="btn btn-primary" id=""
+                    onclick="window.location='{{ ruta }}'">
+                Regresar
+            </button>
+            <button type="button" class="btn btn-success" id="btnPdf"
+            ><i class="fa fa-print" aria-hidden="true"></i>
+                Imprimir
+            </button>
+        </div>
+    </div>
+    <!-- Fin de Pagineo -->
+{% endblock %}
+{% block jscript %}
+    <script>
+
+        $(function () {
+            var logo = new Image();
+            logo.src = '/static/img/metal.jpg';
+            var columns = ["#Material", "Tipo", "Cantidad", "Precio/u","Monto"];
+            var data = [
+                {% for c in detallee %}
+                    ['{{  c.material.material  }}', '{{c.material.tipo.nombre }}', '{{ c.cantidad }}', '${{ c.valor }}'
+                        ,'$'+({{ c.cantidad }}*{{ c.valor }})],
+                {% endfor %}
+        ];
+
+            $('#btnPdf').click(function () {
+                //Crear documento PDF con horientación vertical
+                var doc = new jsPDF('p', 'pt','a4');
+                //dibujar un cuadrado
+                doc.setDrawColor(0);
+                doc.setFillColor(13, 113, 171);
+                doc.rect(430, 10, 150, 30, 'F');
+                //Escribir en el documento con la función doc.text(x, y, texto);
+                doc.setTextColor(31, 32, 31);
+                var fac="Codigo:\n{{ compraa.id }}"
+                    +'\n\n'+"Proveedor:\n{{ compraa.cliProentidad.nombre }}"+'\n\n'+"Fecha de Venta:\n{{ compraa.fecha |date:"M d, Y" }}";
+                // doc.line(100, 100, 500, 60); // horizontal line
+                //Fuente
+                //doc.setFont('helvetica');
+                //Tipo de letra negrita
+                //doc.setFontType('bold');
+                doc.setFont("courier");
+                doc.setFontType("bolditalic");
+                doc.setFontSize(14);
+                //Tamaño de letra 12
+                // x ,y
+                //doc.text(fac, 30,40);// set your margins
+                doc.text(fac, 40,55);// set your margins
+                doc.setFontSize(8);
+                doc.text('Dirección: \n'+'{{ empresa.direcion }}', 420,150);// set your margins
+                doc.text('Celular: \n'+'{{ empresa.celular }}', 420,180);// set your margins
+                doc.setFontSize(26);
+                //Tamaño de letra 12
+                // x ,y
+                doc.setTextColor(252, 252, 252);
+                doc.text('Compra', 450, 30);// set your margins
+                doc.setFillColor(13, 113, 171);
+                doc.rect(420, 205, 110, 25, 'F');
+                doc.setFontSize(10);
+                doc.text('Subtotal:$'+{{ compraa.total }}, 425, 205);// set your margins
+                doc.setFontSize(10);
+                doc.text('Total:$'+"{{ compraa.total }}", 425, 225);// set your margins
+                doc.setFontSize(10);
+                doc.text('Total:$'+{{ compraa.total }}, 425, 245);// set your margins
+                //Agregar imagen, funcion doc.addImage(src, tipo, x, y, ancho, alto);
+                //doc.addImage(logo, 'JPG', 20, 10, 110, 120);
+                // doc.addImage(logo, 'JPG', 460, 50, 100, 100);
+                doc.addImage(logo, 'JPG', 460, 50, 100, 90);
+                //doc.setTextColor(0, 0, 0);
+                let pageNumber = doc.internal.getNumberOfPages();
+                doc.autoTable(columns,data,
+                    {
+                        styles: {overflow: 'linebreak', cellWidth: 'wrap'},
+                        margin:{ top: 280},
+                        theme:'striped',
+                        columnStyles: {text: {cellWidth: 'auto'}},
+                    }
+                );
+                doc.save('Compra:'+"{{ compraa.id }}"+'.pdf');
+            });
+        });
+    </script>
+{% endblock %}

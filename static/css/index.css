@@ -1,0 +1,82 @@
+body{
+    background: url(../img/fond2.jpg) no-repeat center center fixed; /*esto es para el fonde*/
+    background-size: cover; /*esto es para que cubra completamente a la partada*/
+}
+/*este es para bajar el formulario*/
+.main-section{
+    margin:0 auto;
+    margin-top:30%;/* quiero que baje */
+    padding: 0;
+}
+/* esto es para la caja el color*/
+.modal-content{
+    background-color: #CAEAEC;
+    opacity: .95;/* praspararencia*/
+    padding: 0 20px;/* propiedades arriba y abajo*/
+    box-shadow: 0px 0px 3px #848484;/* */
+    height: 320px;
+}
+
+.user-img{
+    margin-top: -50px; /*esto es para que la imagen suba*/
+    margin-bottom: 35px;
+}
+
+.user-img img{
+    width: 122px;/* */
+    height: 120px;
+    box-shadow: 0px 0px 3px #4EDAE3;/* PARA LA SOMBRA EN LOS BORDES A LA CAJITA*/
+    border-radius: 50%;/* PARA QUE LA SOMBRA SE CUADRE COMPLETAMENTE*/
+}
+/* */
+.form-group input{
+    height: 42px;
+    font-size: 18px;
+    border:0;
+    padding-left: 54px;/* espacio PARA EL ICONO*/
+    border-radius: 5px;/**/
+}
+/* AQUI HAGO REFERENCIA*/
+.form-group::before{
+    font-family: "Font Awesome\ 5 Free";
+    position: absolute;
+    left: 28px;
+    font-size: 22px;
+    padding-top:4px;
+}
+p{
+  font-size: 24px;
+  line-height: 1.5;
+  font-family: Helvetica,Arial, sans-serif;
+
+    margin-top: -15px;
+  margin-bottom: 16px;
+}
+.form-group#user-group::before{
+    content: "\f007";/* FONT Awesome CODIGO*/
+}
+
+
+.form-group#email-group::before{
+    content: "\f0e0";/* FONT Awesome CODIGO */
+}
+.form-group#contrasena-group::before{
+    content: "\f023";/* FONT Awesome CODIGO */
+}
+
+button{
+    width: 60%;
+    margin: 5px 0 25px;
+}
+
+.forgot{
+    padding: 5px 0;
+}
+
+.forgot a{
+    color: black;
+}
+@media(width:300px)
+{
+
+}

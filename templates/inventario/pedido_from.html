@@ -1,0 +1,454 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block contenid %}
+    <div class="row">
+        <div class="col-md-5">
+            <div class="lock-screen-wrapper">
+                <div class="panel panel-info">
+                    <div class="panel-body">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-xs-12">
+                                <legend style="font-size: 15px;font-weight: bold">Buscar
+                                    </legend>
+                                      <div class="form-horizontal">
+                                      <div class="row">
+                                        <div class="form-group">
+
+                                                <label class="control-label col-md-2" for="cbcliente">Cédula  o  nombre:</label>
+                                                <div class="col-md-10">
+                                                    <select class="chosen-select form-control list" id="cbcliente"
+                                                            data-placeholder="Seleccione Categoria">
+                                                        <option value="" selected disabled hidden>Seleccione una Cédula o Nombre</option>
+                                                        {% for p in cliente %}
+                                                            <option value="{{ p.id }}"
+                                                                    data-cjson='{"ruc":"{{ p.nombre }}","cedula":"{{ p.ced_ruc }}","direc":"{{ p.direccion }}","email":"{{ p.email }}"}'
+
+                                                                    {{ 'selected' }} >{{ p.ced_ruc }} : {{ p.nombre }}</option>
+                                                        {% endfor %}
+                                                    </select>
+
+                                                </div>
+                                            </div>
+                                     </div></div>
+                                    <legend style="font-size: 15px;font-weight: bold">Datos del cliente
+                                    </legend>
+                                    <div class="form-horizontal">
+                                        <div class="row">
+
+                                            <div class="form-group">
+                                                <label class="control-label col-md-2" for="ruc">Nombre:</label>
+                                                <div class="col-md-10">
+                                                    <input id="ruc" disabled style="background-color: white;" class="form-control" type="text"
+                                                           placeholder="RUC"/>
+                                                </div>
+                                            </div>
+                                        <div class="form-group">
+                                                <label class="control-label col-md-2" for="cedulaas">Cédula:</label>
+                                                <div class="col-md-10">
+                                                    <input id="cedulaas" disabled style="background-color: white;" class="form-control" type="text"
+                                                           placeholder="Cédula"/>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="control-label col-md-2" for="direccion">Dirección:</label>
+                                                <div class="col-md-10">
+                                                    <input id="direccion" disabled class="form-control" style="background-color: white;"
+                                                           type="text"
+                                                           placeholder="Dirección"/>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label col-md-2" for="email">Email:</label>
+                                                <div class="col-md-10">
+                                                    <input id="email" disabled readonly style="background-color: white;"
+                                                           class="form-control" type="text">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label col-md-2" for="fecha">Fecha de Entrega:</label>
+                                                <div class="col-md-10">
+                                                    <input id="fecha" value="" required
+                                                           class="form-control" type="date"
+                                                           placeholder="Hora"/>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label col-md-2" for="hora">Hora de Entrega:</label>
+                                                <div class="col-md-10">
+                                                    <input id="hora" value="" required="true"
+                                                           class="form-control" type="time"
+                                                           placeholder="Fecha"/>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+
+                                        <br><br>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+        <div class="col-md-7">
+
+            <div class="lock-screen-wrapper">
+                <div class="panel panel-info">
+                    <div class="panel-body">
+                        <div class="container-fluid">
+                            <div class="">
+                                <div class="">
+                                    <div class="border border-info" >
+
+                                        <form id="frm-additem" class="form-horizontal">
+                                            <div class="form-group">
+                                                <div class="col-md-4 col-lg-offset-8">
+                                                    <button class="btn btn-primary form-control"
+                                                            id="btn-agregar" placeholder="" title="Insertar Articulo">
+                                                        <i class="glyphicon glyphicon-plus">Insertar</i>
+                                                    </button>
+                                                </div>
+                                                <legend style="font-size: 15px;font-weight: bold">
+                                                    <h3>Datos del Articulo.</h3>
+                                                </legend>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="control-label col-md-3" for="cbarticulo">Articulo:</label>
+                                                <div class="col-md-9">
+                                                    <select class="chosen-select form-control" id="cbarticulo"
+                                                            data-placeholder="Seleccione Articulo">
+                                                        <option value="">Seleccione Articulo</option>
+                                                        {% for a in Articulo  %}
+                                                            <option value="{{ a.id }}"
+                                                                    data-ajson='{"id":"{{ a.id }}","precio":"{{ a.precio }}","image":"{{ a.image }}","stock":"{{ a.cantidad }}"}'>{{ a.nombre }} , {{ a.descripcion }}  </option>
+                                                        {% endfor %}
+                                                    </select>
+
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label col-md-3" for="art-cantidad">Cantidad:</label>
+                                                <div class="col-md-9">
+                                                    <input id="art-cantidad" class="form-control" required="true"
+                                                           type="number"   min="1" max="100" placeholder="Cant"/>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label  class="control-label col-md-3" for="art-precio">Precio:</label>
+                                                <div class="col-md-9">
+                                                    <input id="art-precio" style="background-color: white;" disabled
+                                                           class="form-control" type="text" required="true"
+                                                           placeholder="Precio"/>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label  class="control-label col-md-3" for="imagen">Imagen:</label>
+                                                <div class="col-md-9">
+                                                    <div class="pull-left image">
+                                                        <center> <a href="/media/46871.jpeg" id="ref" data-lightbox="mygallery" data-title="">
+                                                            <img  src="/media/46871.jpeg" id="image" title="ver imagen" class="img-fluid center" alt="Responsive image" style="width:100px; height:100px;"  ></a> </center>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label  class="control-label col-md-3" for="abono">Abono:</label>
+                                                <div class="col-md-9">
+                                                    <input id="abono"
+                                                           class="form-control" type="text" title="Abonar"  value="0" onKeyPress="return soloNumeros(event)" required="true"
+                                                           placeholder="Abonar"/>
+                                                </div></div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <legend style="font-size: 15px;font-weight: bold">Detalle de Articulo
+                                    </legend>
+                                    <div class="">
+                                        <div class="">
+                                            <div class="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="container-fluid">
+                                        <div class="row">
+                                            <div class="col-xs-15">
+                                                <div class="table-responsive">
+                                                    <table class="table table-striped table-bordered table-responsive table-striped"
+                                                           id="websendeos" style="white-space: pre-line;">
+                                                        <thead>
+                                                        <tr class="info">
+                                                            <th>Caracteristica</th>
+                                                            <th>Precio</th>
+                                                            <th>Cantidad</th>
+                                                            <th>Total</th>
+                                                            <th>Abonado</th>
+                                                            <th class="col-xs-1">Acción</th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody id="tdetalle">
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-8 col-lg-offset-4">
+                                                <div class="panel panel-info">
+                                                    <div class="panel-heading">
+                                                        <strong class="panel-title">Pedido</strong>
+                                                    </div>
+                                                    <div class="table-responsive">
+                                                        <table class="table table-striped table-bordered table-responsive table-striped"
+                                                               style="display: block;">
+                                                            <tbody>
+                                                            <tr>
+                                                                <td>
+                                                                    <div class="form-group">
+                                                                        <label class="control-label col-md-3" for="id_mtotal">Total a Pagar:</label>
+                                                                        <div class="col-md-9">
+                                                                            <input type="text" class="form-control " name="id_mtotal" maxlength="40" readonly="" style="font-weight: bold; background: white;"
+                                                                                   id="id_mtotal"  required="true" placeholder="0.00" >
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="text-right">
+                                                                    <div class="form-group">
+                                                                        <label class="control-label col-md-3" for="id_mtotal">Total Abanado:</label>
+                                                                        <div class="col-md-9">
+                                                                            <input id="id_abono" readonly="" class="form-control"
+                                                                                   type="text" placeholder="0.00" style="font-weight: bold" >
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+
+                                                            </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="well well-sm">
+                                        <div class="row">
+                                            <div class="col-lg-offset-1">
+
+                                                <button id="btn-registrar" class="btn btn-success"
+                                                        type="submit">
+                                                                <span id="loading"
+                                                                      class="fa fa-save"></span>
+                                                    <span id="caption"><strong>Registrar
+                                                                    </strong></span>
+                                                </button>
+                                                <button type="button" class="btn btn-danger" id="cancelar"
+                                                        onclick="window.location='{{ ruta }}'">
+                                                    <span class="fa fa-trash-o">    </span>
+                                                    Cancelar
+                                                </button>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+{% endblock %}
+{% block jscript %}
+    <script>
+
+        $(function () {
+            $('.chosen-select').chosen();
+            $('#cbcliente').change(function () {
+                var proveedor = $('#cbcliente option:selected').data('cjson');
+                $('#ruc').val(proveedor.ruc);
+                $('#cedulaas').val(proveedor.cedula);
+                $('#direccion').val(proveedor.direc);
+                $('#email').val(proveedor.email);
+            });
+            $('#cbcliente').change();
+            $('#cbarticulo').change(function () {
+                var option = $('#cbarticulo option:selected');
+                if (option.val() != '') {
+                    var articulo = option.data('ajson');
+                    var total =articulo.stock*articulo.precio;
+                    $('#art-cantidad').val(1);
+                    $('#art-precio').val(articulo.precio);
+                    $('#art-totall').val(total);
+                    $('#image').attr("src","/media/"+articulo.image);
+                    $('#ref').attr("href","/media/"+articulo.image);
+                } else {
+                    $('#art-cod').val('');
+                    $('#art-cantidad').val('');
+                    $('#art-precio').val('');
+                    $('#art-totall').val('');
+                    $('#image').attr("src","/media/46871.jpeg");
+                    $('#ref').attr("href","/media/46871.jpeg");
+                }
+            });
+            $('#cbarticulo').change();
+            $('#frm-additem').submit(function (e) {
+                e.preventDefault();
+                var option = $('#cbarticulo option:selected');
+                var cantidad = parseInt($('#art-cantidad').val());
+                var data = option.data('ajson');
+                var item = new Object();
+                item.id = data.id;
+                item.abono = parseFloat($('#abono').val());
+                item.precio = parseFloat($('#art-precio').val());
+                item.descripcion = option.text();
+                item.cantidad = cantidad;
+                app.add(item);
+            });
+            $('#btn-registrar').click(function(){
+                if (app.pedido.items.length > 0 && app.pedido.total > 0) {
+                    if ($('#fecha').val()) {
+                        if ($('#cbcliente').val()) {
+                            swal({
+                                    title: '¿Estás Seguro?',
+                                    text: 'Registrar Factura!',
+                                    type: 'warning',
+                                    showCancelButton: true,
+                                    confirmButtonColor: '#3085d6',
+                                    cancelButtonColor: '#d33',
+                                    confirmButtonText: 'Continuar!',
+                                    cancelButtonText:  'Cancelar!',
+                                    closeOnConfirm: false,
+                                    showLoaderOmConfirm: true
+                                },
+                                function(){
+                                    app.pedido.cliente = $('#cbcliente').val();
+                                    app.pedido.fecha = $('#fecha').val();
+                                    app.pedido.hora = $('#hora').val();
+
+                                    $.ajax({
+                                        type:"GET",
+                                        url: '/scmi/pedido/',
+                                        data: {
+                                            'action':'pedido', pedido: JSON.stringify(app.pedido)
+                                        },
+                                        dataType: 'json',
+                                        success: function (data) {
+                                            if (data.resp == true) {
+                                                    swal('Registrar!', 'Pedido realizada.', 'success');
+
+                                                window.location.reload();
+                                            } else {
+                                                swal('Registrar!', data.mensaje);
+                                            }
+                                        }
+                                    });
+                                });
+                        }else{
+                            swal('Información!', 'Debe Seleccionar Cliente');
+                        }
+                    }else{
+                        document.getElementById('fecha').focus();
+                        swal('Información!', 'Debe Seleccionar Fecha de entrega');
+                    }
+                }else{
+                    swal('Información!', 'Debe Ingresar Articulos al Detalle');
+                }
+            });
+        });
+        var app = {
+            pedido: {
+                //cabecera
+                fecha: '',
+                hora: '',
+                presupuesto: '',
+                proveedor: 0,
+                subtotal: 0,
+                total: 0,
+                //detalle
+                items: []
+            },
+            add: function (item) {
+                if (!this.existe(item)) {
+                    var iva =0.12;
+                    item.subtotal  =item.cantidad * item.precio;
+                    item.total = (item.subtotal)*iva+ item.subtotal;
+                    this.pedido.items.push(item);
+                }
+                this.actualizar();
+                this.presentar();
+                return true;
+            },
+            eliminar: function (id) {
+                for (var i in this.pedido.items) {
+                    if (this.pedido.items[i].id == id) {
+                        this.pedido.items.splice(i,1);
+                        this.actualizar();
+                        this.presentar();
+                        return true;
+                    }
+                }
+                return false;
+            },
+            existe: function (item) {
+                for (var i in this.pedido.items) {
+                    if (item.id == this.pedido.items[i].id) {
+                        this.pedido.items[i].cantidad += item.cantidad;
+                        this.pedido.items[i].precio = item.precio;
+                        this.pedido.items[i].abono = item.abono;
+                        this.pedido.items[i].subtotal = this.pedido.items[i].cantidad * item.precio;
+                        this.pedido.items[i].total = (this.pedido.items[i].subtotal ) + this.pedido.items[i].iva;
+                        return true;
+                    }
+                }
+                return false;
+            },
+            actualizar: function () {
+                this.pedido.subtotal = 0;
+                var ivaa =0.12;
+                this.pedido.descuento = 0;
+                this.pedido.total = 0;
+                this.pedido.presupuesto = 0;
+                for (var item of this.pedido.items) {
+                    this.pedido.subtotal += item.subtotal;
+                    this.pedido.total += (item.subtotal)*ivaa+ item.subtotal;
+                    this.pedido.presupuesto +=item.abono;
+                }
+                $('#id_mtotal').val('$'+this.pedido.subtotal.toFixed(2));
+                $('#id_abono').val('$'+this.pedido.presupuesto.toFixed(2));
+            },
+            presentar: function () {
+                $('#tdetalle').html('');
+                for (var item of this.pedido.items ){
+                    var tr = '<tr>';
+                    tr += '<td>' + item.descripcion + '</td>';
+                    tr += '<td>' +'$'+ item.precio + '</td>';
+                    tr += '<td>' + item.cantidad + '</td>';
+                    tr += '<td>' +'$'+ item.subtotal + '</td>';
+                    tr += '<td>' +'$'+ item.abono + '</td>';
+                    tr +='<td class="danger"><button onclick="app.eliminar('+ item.id +')"  title="Eliminar"class="btn btn-danger"><i class="fa fa-trash-o"></i> </button></td>';
+                    tr += '</tr>';
+                    $('#tdetalle').append(tr);
+                }
+            },
+        };
+    </script>
+{% endblock %}

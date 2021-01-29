@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block contenid %}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="lock-screen-wrapper">
+                        <div class="panel panel-info">
+                            <div class="panel panel-heading">
+                                <H1>Calendario de Pedidos de Articulos </H1>
+                            </div>
+                            <div class="panel-body">
+                                <div id="calendariopedido">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block jscript %}
+    <script src="/static/fullcalendar/jquery.min.js"></script>
+    <script src='/static/fullcalendar/moment.min.js'></script>
+    <script src='/static/js/jquery-ui.js'></script>
+    <script src='/static/fullcalendar/fullcalendar.min.js'></script>
+
+    <script src='/static/fullcalendar/es.js'></script>
+    <script>
+        $('#calendariopedido').fullCalendar({
+            header: {
+                left: 'prev,next today',
+                center: 'title',
+                right: 'month,agendaWeek,agendaDay'
+
+            }, height : 500,
+            width  : 650,
+            events : [
+                {% for c in pedidooo %}
+                    {
+                        title  : '{{ c.cliProentidad}}',
+                        start  : '{{ c.fecentrega|date:"Y-m-d"}}'
+                    },{% endfor %}
+            ]
+        });
+    </script>
+{% endblock %}
