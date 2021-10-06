@@ -144,3 +144,17 @@ function validaCmbTipCli() {
     return false;
   }
 }*/
+/* JSON.stingify
+  <input type="checkbox" id="idinss{{ cuentasporpagar.id }}"
+ idnn="{{ cuentasporpagar.id }}" class="enviaotrocliente" >
+ lista_clientescuentas = [];
+$(".enviaotrocliente").each(function(){
+  var idn =parseInt($(this).attr("idnn"));
+  if ($('#idinss'+idn).attr('checked')){
+	    var item = { id: idn};
+            lista_clientescuentas .push(item);
+  }
+  
+  if( $('.enviaotrocliente').is(':checked') ) {
+  }
+});*/
